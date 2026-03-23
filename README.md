@@ -9,12 +9,27 @@ A working prototype using **Django + Python Ninja** for the backend and **Vite +
 - Architecture document and system diagram.
 
 ## Backend
+### macOS / Linux
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r backend/requirements.txt
+python backend/manage.py migrate
 python backend/manage.py runserver
 ```
+
+### Windows PowerShell
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r backend/requirements.txt
+py backend/manage.py migrate
+py backend/manage.py runserver
+```
+
+If `python` is not recognized on Windows, use the `py` launcher as shown above or install Python from python.org and enable the PATH option during setup.
+
+Run `migrate` once before first startup so Django can create the built-in auth/session tables.
 
 The API is available at `http://127.0.0.1:8000/api/alerts`.
 Use request headers:
